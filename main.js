@@ -1,0 +1,3 @@
+/*
+Skrit für die Karte 
+*/
