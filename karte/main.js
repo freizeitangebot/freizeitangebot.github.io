@@ -31,7 +31,7 @@ L.control.scale({
 }).addTo(map);
 
 //Tennisplätze Tirol
-async function loadTennis(url) {
+/*async function loadTennis(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
@@ -48,3 +48,11 @@ async function loadTennis(url) {
     }).addTo(overlays.tennis);
 }
 loadTennis("tennis.geojson")
+*/
+
+  async function loadGeoJSON(url) {
+      let response = await fetch(url);
+      let geojson = await response.json();
+      L.geoJSON(geojson).addTo(map);
+  }
+  loadGeoJSON("tennis_1.geojson");
