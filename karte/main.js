@@ -50,9 +50,9 @@ L.control.scale({
 loadTennis("tennis.geojson")
 */
 
-  async function loadGeoJSON(url) {
-      let response = await fetch(url);
-      let geojson = await response.json();
-      L.geoJSON(geojson).addTo(map);
-  }
-  loadGeoJSON("tennis_1.geojson");
+async function loadGeoJSON(url) {
+    let response = await fetch(url);
+    let geojson = await response.json();
+    L.geoJSON(geojson).addTo(map);
+}
+loadGeoJSON("tennis_1.geojson");
