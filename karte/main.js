@@ -45,6 +45,26 @@ async function loadTennis(url) {
     // console.log(jsondata);
     L.geoJSON(jsondata, {
         // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
+        style: function (feature) {
+            //console.log(feature.properties);
+            let platzColor;
+
+            if (feature.properties.ATTR_BELAG == "Sand") {
+                platzColor = "#FF851B";
+            } else if (feature.properties.ATTR_BELAG == "Teppich") {
+                platzColor = "#0074D9";
+            } else if (feature.properties.ATTR_BELAG == "Hartplatz") {
+                platzColor = "#AAAAAA";
+            } else if (feature.properties.ATTR_BELAG == "Kunstrasen") {
+                platzColor = "#2ECC40";
+            } else {
+                platzColor = "#111111";
+            }
+
+            return {
+                color: platzColor
+            }
+        },
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties);
             layer.bindPopup(`
