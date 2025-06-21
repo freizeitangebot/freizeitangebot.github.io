@@ -136,8 +136,26 @@ async function loadRodel(url) {
     // console.log(jsondata);
     L.geoJSON(jsondata, {
         // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
-        onEachFeature: function (feature, layer) {
+        style: function (feature) {
             //console.log(feature.properties);
+            let rodelColor;
+
+            if (feature.properties.ATTR_TYP == "Sommerrodelbahn") {
+                rodelColor = "#FF851B";
+            } else if (feature.properties.ATTR_TYP == "Naturrodelbahn") {
+                rodelColor = "#0074D9";
+            } else if (feature.properties.ATTR_TYP == "Trainings- und Wettkampfbahn") {
+                rodelColor = "#2ECC40";
+            } else {
+                rodelColor = "#111111";
+            }
+
+            return {
+                color: rodelColor
+            }
+        },
+        onEachFeature: function (feature, layer) {
+            console.log(feature.properties.ATTR_TYP);
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NAME}</h3>
                 <hr>
