@@ -16,6 +16,8 @@ let map = L.map("map", {
 let overlays = {
     tennis: L.featureGroup().addTo(map),
     sport: L.featureGroup().addTo(map),
+    swim: L.featureGroup().addTo(map),
+    rodel: L.featureGroup().addTo(map),
 };
 
 // Layer contol
@@ -25,6 +27,8 @@ let layerControl = L.control.layers({
 }, {
     "Tennisplätze": overlays.tennis,
     "Sportplätze": overlays.sport,
+    "Schwimmplätze": overlays.swim,
+    "Rodelbahnen": overlays.rodel,
 
 }).addTo(map);    
 
@@ -45,11 +49,11 @@ async function loadTennis(url) {
             //console.log(feature.properties);
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NA}</h3>
-                <h5>${feature.properties.ANLAGE_NAM}</h4>
+                <h5>${feature.properties.ANLAGE_NAM}</h5>
                 <hr>
-                <h3>Platz Details</h4>
-                <h5>Belag: ${feature.properties.ATTR_BELAG}</h4>
-                <h5>Gelände: ${feature.properties.ATTR_FREI_}</h4>
+                <h3>Platz Details</h3>
+                <h5>Belag: ${feature.properties.ATTR_BELAG}</h5>
+                <h5>Gelände: ${feature.properties.ATTR_FREI_}</h5>
                 `
             );
         }
@@ -69,11 +73,11 @@ async function loadSport(url) {
             //console.log(feature.properties);
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NAME}</h3>
-                <h5>${feature.properties.ANLAGE_NAME}</h4>
+                <h5>${feature.properties.ANLAGE_NAME}</h5>
                 <hr>
-                <h3>Platz Details</h4>
-                <h5>Belag: ${feature.properties.ATTR_BELAG}</h4>
-                <h5>Gelände: ${feature.properties.ATTR_SPORTPLATZTYP}</h4>
+                <h3>Platz Details</h3>
+                <h5>Belag: ${feature.properties.ATTR_BELAG}</h5>
+                <h5>Gelände: ${feature.properties.ATTR_SPORTPLATZTYP}</h5>
                 `
             );
         }
@@ -81,6 +85,52 @@ async function loadSport(url) {
 }
 loadSport("./sportplaetze/Sportplaetze_5424977732169178233.geojson")
 
+// Schwimmanlagen Tirol
+async function loadSwim(url) {
+    console.log(url);
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    // console.log(jsondata);
+    L.geoJSON(jsondata, {
+        // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties);
+            layer.bindPopup(`
+                <h3>${feature.properties.STAETTE_NAME}</h3>
+                <h5>${feature.properties.ANLAGE_NAME}</h5>
+                <hr>
+                <h3>Schwimmbecken Details</h3>
+                <h5>Typ: ${feature.properties.ATTR_SCHWIMMBECKENTYP}</h5>
+                `
+            );
+        }
+    }).addTo(overlays.swim);
+}
+loadSwim("./schwimmanlagen/Schwimmanlagen_3256018082439661768.geojson")
+
+// Rodelbahnen Tirol
+async function loadRodel(url) {
+    console.log(url);
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    // console.log(jsondata);
+    L.geoJSON(jsondata, {
+        // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties);
+            layer.bindPopup(`
+                <h3>${feature.properties.STAETTE_NAME}</h3>
+                <hr>
+                <h3>Rodelbahn Details</h4>
+                <h5>Typ: ${feature.properties.ATTR_TYP}</h5>
+                <h5>Kategorie: ${feature.properties.ATTR_KATEGORIE}</h5>
+                <h5>Beleuchtung: ${feature.properties.ATTR_BELEUCHTUNG}</h5>
+                `
+            );
+        }
+    }).addTo(overlays.rodel);
+}
+loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
 /*
 async function loadGeoJSON(url) {
     let response = await fetch(url);
