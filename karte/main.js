@@ -1,5 +1,5 @@
 /*
-Skrit für die Karte 
+Skript für die Karte 
 */
 // Innsbruck
 let ibk = {
@@ -45,6 +45,7 @@ async function loadTennis(url) {
     // console.log(jsondata);
     L.geoJSON(jsondata, {
         // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
+
         style: function (feature) {
             //console.log(feature.properties);
             let platzColor;
@@ -155,7 +156,7 @@ async function loadRodel(url) {
             }
         },
         onEachFeature: function (feature, layer) {
-            console.log(feature.properties.ATTR_TYP);
+            //console.log(feature.properties.ATTR_TYP);
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NAME}</h3>
                 <hr>
@@ -169,6 +170,7 @@ async function loadRodel(url) {
     }).addTo(overlays.rodel);
 }
 loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
+
 /*
 async function loadGeoJSON(url) {
     let response = await fetch(url);
