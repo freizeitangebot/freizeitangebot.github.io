@@ -15,6 +15,7 @@ let map = L.map("map", {
 // thematische Layer
 let overlays = {
     tennis: L.featureGroup().addTo(map),
+    sport: L.featureGroup().addTo(map),
 };
 
 // Layer contol
@@ -23,6 +24,7 @@ let layerControl = L.control.layers({
     "Esri WorldImagery": L.tileLayer.provider("Esri.WorldImagery").addTo(map)
 }, {
     "Tennisplätze": overlays.tennis,
+    "Sportplätze": overlays.sport,
 
 }).addTo(map);    
 
@@ -55,6 +57,29 @@ async function loadTennis(url) {
 }
 loadTennis("./tennis/tennis_1.geojson")
 
+// Sportplätze Tirol
+async function loadSport(url) {
+    console.log(url);
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    // console.log(jsondata);
+    L.geoJSON(jsondata, {
+        // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties);
+            layer.bindPopup(`
+                <h3>${feature.properties.STAETTE_NAME}</h3>
+                <h5>${feature.properties.ANLAGE_NAME}</h4>
+                <hr>
+                <h3>Platz Details</h4>
+                <h5>Belag: ${feature.properties.ATTR_BELAG}</h4>
+                <h5>Gelände: ${feature.properties.ATTR_SPORTPLATZTYP}</h4>
+                `
+            );
+        }
+    }).addTo(overlays.sport);
+}
+loadSport("./sportplaetze/Sportplaetze_5424977732169178233.geojson")
 
 /*
 async function loadGeoJSON(url) {
