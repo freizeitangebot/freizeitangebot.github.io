@@ -8,12 +8,13 @@ let ibk = {
 };
 
 // Karte initialisieren
-let map = L.map("map").setView([ibk.lat, ibk.lng], 10);
+let map = L.map("map", {
+    maxZoom: 19,
+}).setView([ibk.lat, ibk.lng], 10);
 
 // thematische Layer
 let overlays = {
     tennis: L.featureGroup().addTo(map),
-
 };
 
 // Layer contol
@@ -30,29 +31,36 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
-//Tennisplätze Tirol
-/*async function loadTennis(url) {
+// Tennisplätze Tirol
+async function loadTennis(url) {
     console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-     console.log(jsondata);
+    // console.log(jsondata);
     L.geoJSON(jsondata, {
         // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
         onEachFeature: function (feature, layer) {
-             console.log(feature.properties);
+            //console.log(feature.properties);
             layer.bindPopup(`
-                <h3>${feature.properties[""]}</h3>
+                <h3>${feature.properties.STAETTE_NA}</h3>
+                <h5>${feature.properties.ANLAGE_NAM}</h4>
+                <hr>
+                <h3>Platz Details</h4>
+                <h5>Belag: ${feature.properties.ATTR_BELAG}</h4>
+                <h5>Gelände: ${feature.properties.ATTR_FREI_}</h4>
                 `
             );
         }
     }).addTo(overlays.tennis);
 }
-loadTennis("tennis.geojson")
-*/
+loadTennis("./tennis/tennis_1.geojson")
 
+
+/*
 async function loadGeoJSON(url) {
     let response = await fetch(url);
     let geojson = await response.json();
     L.geoJSON(geojson).addTo(map);
 }
 loadGeoJSON("./tennis/tennis_1.geojson");
+*/
