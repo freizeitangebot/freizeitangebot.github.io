@@ -55,4 +55,4 @@ async function loadGeoJSON(url) {
     let geojson = await response.json();
     L.geoJSON(geojson).addTo(map);
 }
-loadGeoJSON("tennis_1.geojson");
+loadGeoJSON("./tennis/tennis_1.geojson");
