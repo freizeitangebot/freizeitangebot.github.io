@@ -68,8 +68,9 @@ let overlays = {
                     ">
                     <div style="
                         position: absolute;
-                        bottom: 11px;
-                        left: 7px;
+                        bottom: 6px;
+                        left: 50%;
+                        transform: translateX(-50%);
                         color: black;
                         font-weight: bold;
                         font-size: 14px;
@@ -103,7 +104,7 @@ let overlays = {
                     ">
                     <div style="
                         position: absolute;
-                        bottom: 11px;
+                        bottom: 20px;
                         left: 7px;
                         color: black;
                         font-weight: bold;
