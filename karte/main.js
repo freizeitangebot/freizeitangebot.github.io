@@ -14,7 +14,9 @@ let map = L.map("map", {
 
 // thematische Layer
 let overlays = {
-    tennis: L.featureGroup().addTo(map),
+    tennis: L.markerClusterGroup({
+        disableClusteringAtZoom: 17,
+    }).addTo(map),
     sport: L.featureGroup().addTo(map),
     swim: L.featureGroup().addTo(map),
     rodel: L.featureGroup().addTo(map),
@@ -68,6 +70,14 @@ async function loadTennis(url) {
         },
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties);
+            let center = layer.getBounds().getCenter();
+            let marker = L.marker(center, {
+                icon: L.icon({
+                    iconUrl: "./tennis/tennis.png",
+                    iconAnchor: [16, 37],
+                })
+            }).addTo(overlays.tennis);
+
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NA}</h3>
                 <h5>${feature.properties.ANLAGE_NAM}</h5>
