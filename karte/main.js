@@ -16,7 +16,39 @@ let map = L.map("map", {
 let overlays = {
     tennis: L.markerClusterGroup({
         disableClusteringAtZoom: 17,
+        /* KI_BEGIN */
+        iconCreateFunction: function (cluster) {
+            let count = cluster.getChildCount();
+
+            return L.divIcon({
+                html: `
+                    <div style="
+                        background-image: url('./tennis/tennis.png');
+                        background-size: cover;
+                        width: 50px;
+                        height: 60px;
+                        position: relative;
+                        
+                        
+                    ">
+                    <div style="
+                        position: absolute;
+                        bottom: 11px;
+                        left: 7px;
+                        color: black;
+                        font-weight: bold;
+                        font-size: 14px;
+                    ">
+                        ${count}
+                    </div>
+                `,
+                className: '', 
+                iconSize: [50, 50]
+            });
+        }
+
     }).addTo(map),
+    /* KI_END */
     sport: L.featureGroup().addTo(map),
     swim: L.featureGroup().addTo(map),
     rodel: L.featureGroup().addTo(map),
