@@ -108,6 +108,11 @@ let overlays = {
                         color: black;
                         font-weight: bold;
                         font-size: 14px;
+                        text-shadow:
+                            -1px -1px 0 white,
+                            1px -1px 0 white,
+                            -1px  1px 0 white,
+                            1px  1px 0 white;
                     ">
                         ${count}
                     </div>
@@ -118,6 +123,7 @@ let overlays = {
         }
 
     }).addTo(map),
+     /* KI_END */
     rodel: L.featureGroup().addTo(map),
 };
 
