@@ -85,7 +85,7 @@ let overlays = {
     }).addTo(map),
     /* KI_END */
     swim: L.markerClusterGroup({
-        disableClusteringAtZoom: 16, 
+        disableClusteringAtZoom: 17, 
         /* KI_BEGIN */
         iconCreateFunction: function (cluster) {
             let count = cluster.getChildCount();
