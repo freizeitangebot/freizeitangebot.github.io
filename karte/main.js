@@ -7,9 +7,16 @@ let ibk = {
     lng: 11.392778
 };
 
+let boundsTirol = L.latLngBounds(
+    [46.5, 9.8],  // Südwestlichster Punkt (z. B. Nauders)
+    [47.8, 13.4]   // Nordöstlichster Punkt (z. B. Kufstein)
+);
+
 // Karte initialisieren
 let map = L.map("map", {
     maxZoom: 19,
+    minZoom: 8,
+    maxBounds: boundsTirol,
 }).setView([ibk.lat, ibk.lng], 12);
 
 // thematische Layer
