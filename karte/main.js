@@ -10,7 +10,7 @@ let ibk = {
 // Karte initialisieren
 let map = L.map("map", {
     maxZoom: 19,
-}).setView([ibk.lat, ibk.lng], 10);
+}).setView([ibk.lat, ibk.lng], 12);
 
 // thematische Layer
 let overlays = {
@@ -49,7 +49,40 @@ let overlays = {
 
     }).addTo(map),
     /* KI_END */
-    sport: L.featureGroup().addTo(map),
+    sport: L.markerClusterGroup({
+        disableClusteringAtZoom: 16,
+        /* KI_BEGIN */
+        iconCreateFunction: function (cluster) {
+            let count = cluster.getChildCount();
+
+            return L.divIcon({
+                html: `
+                    <div style="
+                        background-image: url('./sportplaetze/soccerfield.png');
+                        background-size: cover;
+                        width: 50px;
+                        height: 60px;
+                        position: relative;
+                        
+                        
+                    ">
+                    <div style="
+                        position: absolute;
+                        bottom: 11px;
+                        left: 7px;
+                        color: black;
+                        font-weight: bold;
+                        font-size: 14px;
+                    ">
+                        ${count}
+                    </div>
+                `,
+                className: '', 
+                iconSize: [50, 50]
+            });
+        }
+
+    }).addTo(map),
     swim: L.featureGroup().addTo(map),
     rodel: L.featureGroup().addTo(map),
 };
@@ -89,11 +122,11 @@ async function loadTennis(url) {
             } else if (feature.properties.ATTR_BELAG == "Teppich") {
                 platzColor = "#0074D9";
             } else if (feature.properties.ATTR_BELAG == "Hartplatz") {
-                platzColor = "#AAAAAA";
+                platzColor = "#111111";
             } else if (feature.properties.ATTR_BELAG == "Kunstrasen") {
                 platzColor = "#2ECC40";
             } else {
-                platzColor = "#111111";
+                platzColor = "#AAAAAA";
             }
 
             return {
@@ -152,6 +185,14 @@ async function loadSport(url) {
         },
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties.ATTR_SPORTPLATZTYP);
+            let center = layer.getBounds().getCenter();
+            let marker = L.marker(center, {
+                icon: L.icon({
+                    iconUrl: "./sportplaetze/soccerfield.png",
+                    iconAnchor: [16, 37],
+                })
+            }).addTo(overlays.sport);
+
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NAME}</h3>
                 <h5>${feature.properties.ANLAGE_NAME}</h5>
@@ -176,6 +217,16 @@ async function loadSwim(url) {
         // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties);
+
+             let center = layer.getBounds().getCenter();
+            let marker = L.marker(center, {
+                icon: L.icon({
+                    iconUrl: "./schwimmanlagen/swimming2.png",
+                    iconAnchor: [16, 37],
+                    maxZoom: 14,
+                })
+            }).addTo(overlays.swim);
+
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NAME}</h3>
                 <h5>${feature.properties.ANLAGE_NAME}</h5>
@@ -231,11 +282,3 @@ async function loadRodel(url) {
 }
 loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
 
-/*
-async function loadGeoJSON(url) {
-    let response = await fetch(url);
-    let geojson = await response.json();
-    L.geoJSON(geojson).addTo(map);
-}
-loadGeoJSON("./tennis/tennis_1.geojson");
-*/
