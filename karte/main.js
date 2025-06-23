@@ -333,10 +333,26 @@ var miniMap = new L.Control.MiniMap(gkTirol, {
 //Leaflet fullscreen Plugin
 map.addControl(new L.Control.Fullscreen());
 
- // Leaflet locationcontrol
-        L.control.locate({
-            strings: {
-                title:"Eigenen Standort anzeigen"
-            },
-            drawCircle: false
-        }).addTo(map);
+// Leaflet locationcontrol
+L.control.locate({
+    strings: {
+        title:"Eigenen Standort anzeigen"
+    },
+    drawCircle: false
+}).addTo(map);
+
+// Geo search
+const searchControl = new GeoSearch.GeoSearchControl({
+    provider: new GeoSearch.OpenStreetMapProvider(),
+    style: "bar",
+    searchLable: "Adresse suchen",
+});
+map.addControl(searchControl);
+
+ //Resetview
+L.control.resetView({
+    position: "topleft",
+    title: "Reset view",
+    latlng: map.getCenter(),
+    zoom: map.getZoom(),
+}).addTo(map);
