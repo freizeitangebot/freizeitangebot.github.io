@@ -1,5 +1,0 @@
-/*
-Skrit für die Karte 
-*/
-
-
