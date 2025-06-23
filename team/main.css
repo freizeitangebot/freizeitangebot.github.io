@@ -37,11 +37,14 @@ main {
 }
 
 .team-member img {
-    width: 100%;                           /* Bild nimmt die volle Breite des umgebenden Containers ein */
-    max-width: 300px;                      /* Bild darf maximal 300 Pixel breit sein */
-    border-radius: 8px;                    /* Runde Ecken des Bilds mit 8 Pixel Radius */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Schatteneffekt unter dem Bild für mehr Tiefe */
+    width: 100%;                             /* Skaliert innerhalb des Containers */
+    max-width: 300px;                        /* Maximal 300px breit */
+    height: 300px;                           /* Feste Höhe für alle Bilder */
+    object-fit: cover;                       /* Schneidet Bilder zu, ohne Verzerrung */
+    border-radius: 8px;                      /* Runde Ecken */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Schatteneffekt */
 }
+
 
 .contact-info {
     margin-top: 10px;                      /* Abstand oberhalb der Kontaktinfo */
