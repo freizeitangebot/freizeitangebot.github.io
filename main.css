@@ -1,1 +1,71 @@
-/*cSS-Stil für die Website und Karte */
+
+/*CSS-Stile für die Startseite */
+
+body {
+    font-family: Arial, sans-serif;     /* Setzt die Schriftart für den gesamten Text auf Arial*/
+    background-color: #f4f4f4;        /* Hellgrauer Hintergrund für die ganze Seite */
+    margin: 0;                          /* Entfernt den Standard-Außenabstand des Body */
+    padding: 0;                         /* Entfernt den inneren Abstand des Body */
+}
+
+/* KI_BEGIN */
+header {
+    background-image: url("images/header.jpg");         /* Hintergrundbild im Header */
+    background-size: cover;                             /* Das Bild füllt den Header vollständig */
+    background-position: center;                        /* Das Bild wird mittig im Header ausgerichtet */
+    height: 250px;                                      /* Höhe des Headers beträgt 250 Pixel */
+    max-width: 1100px;                                  /* Begrenzung der Header-Breite auf 1100 Pixel */
+    margin: 0 auto;                                     /* Zentriert den Header horizontal auf der Seite */
+    display: flex;                                      /* Aktiviert Flexbox, damit Inhalte zentriert werden können */
+    align-items: center;                                /* Zentriert den Inhalt vertikal innerhalb des Headers */
+    justify-content: center;                            /* Zentriert den Inhalt horizontal im Header */
+    color: white;                                     /* Weißer Text im Header */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);      /* Schatten hinter dem Text für bessere Lesbarkeit */
+    font-size: 2.5em;                                   /* Vergrößert den Text auf das 2,5-Fache der Standardgröße */
+    font-weight: bold;                                  /* Macht den Text fett */
+}
+/* KI_END */
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;                 /* Innenabstand im Main-Bereich (Inhalt wird eingerückt) */
+    background-color: white;     /* Weißer Hintergrund für den Hauptinhalt */
+}
+
+/* KI_BEGIN */
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Abstand zwischen Bildern */
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.image-grid figure {
+    flex: 1 1 calc(33.333% - 2rem); /* 3 Spalten mit Abstand */
+    max-width: 300px;
+    text-align: center;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* für abgerundete Ecken */
+}
+/* KI_END */
+
+footer {
+    text-align: center;
+    padding: 1em 2em 3em 2em;
+    background-color: #222;    /* Sehr dunkler Hintergrund im Footer */
+    color: white;              /* Weiße Schrift im Footer */
+}
+
+/* KI_BEGIN */
+footer a {
+    color: #ccc;                /* Hellgraue Farbe für Links im Footer */
+    margin: 0 15px;               /* Horizontaler Abstand zwischen den Links */
+    text-decoration: none;        /* Entfernt Unterstreichung der Links */
+}
+/* KI_END */
