@@ -316,3 +316,5 @@ async function loadRodel(url) {
 }
 loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
 
+//Leaflet fullscreen Plugin
+map.addControl(new L.Control.Fullscreen());
