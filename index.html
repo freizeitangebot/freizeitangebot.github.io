@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -5,32 +6,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freizeitangebote in Tirol</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="main.js"></script>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Leaflet providers -->
+    <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+
+    <!-- eigene Stile und Hauptskript -->
+    <link rel="stylesheet" href="main.css" />
+    <script defer src="main.js"></script>
 </head>
+
 
 <body>
     <header>
-
+        Freizeitangebote in Tirol
     </header>
-    <article>
-        <main>
-            <h1>Freizeitangebote in Tirol</h1>
-            <h3>Bastian Wilbrandt, Gregory Sprenger, Ben Mertens</h3>
-            <a href="konzept.pdf" target="_blank">Konzept Projektarbeit</a>
-        </main>
-        <a href="./team/index.html">Teamseite</a>
-        <br>
-        <a href="./karte/index.html">zur Karte</a>
-    </article>
+
+    <main>
+        <article>
+            <h1>Freizeitangebote in Tirol - interaktiv entdecken</h1>
+            <h2>Willkommen auf unserer Projektseite!</h2>
+            <p>Unser Projekt beschäftigt sich mit der Erstellung einer <strong>interaktiven Webkarte</strong>, die
+                sportliche Freizeitangebote im Bundesland Tirol übersichtlich und benutzerfreundlich visualisiert.</p>
+            <p>Unsere Zielgruppe sind sportlich aktive Menschen - darunter Familien, Einzelpersonen, Tourist:innen sowie
+                Einwohner:innen Tirols - die ihre Freizeit abwechslungsreich gestalten möchten und nach einem schnellen
+                Überblick über Sportmöglichkeiten in der Umgebung suchen.</p>
+            <h3>Was bietet unsere Webanwendung?</h3>
+            <p>Auf der Karte, die über den Menüpunkt 'Karte' erreichbar ist, lassen sich die Freizeitangebote
+                interaktiv entdecken. Per Klick auf einzelne Symbole erhalten Nutzer:innen weitere Informationen zu
+                Standort, Angebot, Öffnungszeiten und vieles mehr.</p>
+            <p>Die interaktive Karte zeigt eine Vielzahl sportlicher Freizeitangebote in Tirol und bietet eine
+                <strong>strukturierte Übersicht</strong> über unterschiedliche Sportarten und Trainingsmöglichkeiten.
+                Aktuell werden folgende Angebote dargestellt:
+            </p>
+            <div class="image-grid">
+                <figure>
+                    <img src="images/schwimmen.jpg" alt="Schwimmanlagen">
+                    <!--Bild von Pixabay-->
+                    <figcaption><i class="fa-solid fa-person-swimming"></i> Schwimmanlagen </figcaption>
+                </figure>
+                <figure>
+                    <img src="images/fußball.jpg" alt="Fußballplätze">
+                    <!--Bild von Pixabay-->
+                    <figcaption><i class="fa-solid fa-futbol"></i> Fußballplätze </figcaption>
+                </figure>
+                <figure>
+                    <img src="images/tennis.jpg" alt="Tennisplätze">
+                    <!--Bild von Pixabay-->
+                    <figcaption><i class="fa-solid fa-table-tennis-paddle-ball"></i> Tennisplätze </figcaption>
+                </figure>
+                <figure>
+                    <img src="images/rodeln.jpg" alt="Rodelbahnen">
+                    <!--Bild von Pixabay-->
+                    <figcaption><i class="fa-solid fa-car-side"></i> Rodelbahnen (Sommer) </figcaption>
+                </figure>
+                <figure>
+                    <img src="images/rodeln_winter.jpg" alt="Rodelbahnen">
+                    <!--Bild von Pixabay-->
+                    <figcaption><i class="fa-solid fa-sleigh"></i> Rodelbahnen (Winter) </figcaption>
+                </figure>
+                <figure>
+                    <img src="images/biketrails.jpg" alt="Bike-Trails">
+                    <!--Bild von Pixabay-->
+                    <figcaption><i class="fa-solid fa-person-biking"></i> Bike-Trails </figcaption>
+                </figure>
+            </div>
+            <h3>Zusatzinformationen</h3>
+            <p>Die Anwendung basiert auf HTML, CSS, JavaScript und der Leaflet-Bibliothek. Die verwendeten Geodaten
+                stammen aus frei verfügbaren Open-Data-Portalen und liegen im GeoJSON-Format vor. Die gesamte
+                Entwicklung erfolgt versionskontrolliert über GIT.</p>
+            <p>Um die Benutzererfahrung zu verbessern, enthält unsere Anwendung folgende Seiten:</p>
+            <ul>
+                <li><strong>Startseite</strong> - stimmungsvolle Einführung in das Projekt</li>
+                <li><strong>Karte</strong> - interaktive Darstellung der verschiedenen Aktivitäten und Standorte</li>
+                <li><strong>Team</strong> - die Köpfe und Informationen hinter der Anwendung</li>
+            </ul>
+            <h3>Ziel des Projekts</h3>
+            <p>Dieses Webprojekt wurde im Rahmen einer Lehrveranstaltung zur Webentwicklung mit dem Ziel entwickelt,
+                sportliche Freizeitangebote im Bundesland Tirol mithilfe moderner Webtechnologien zu visualisieren. Der
+                Fokus liegt dabei auf der Verwendung von Open Data, interaktiver Kartenvisualisierung (Leaflet) und
+                benutzerzentriertem Design.</p>
+            <h3> <i class="fa-solid fa-link"></i> Links zu den Bildern</h3>
+            <p>Sämtliche verwendeten Bilder stammen von der Plattform Pixabay und stehen unter einer freien Lizenz zur
+                nicht-kommerziellen Verwendung, was den Einsatz in diesem studentischen Projekt ermöglicht.</p>
+            <ul>
+                <li><a href="https://pixabay.com/">Pixabay Homepage</a></li>
+                <li><a href="https://pixabay.com/de/photos/menschen-mann-kerl-baden-sport-2588747/">Schwimmanlagen</a>
+                </li>
+                <li><a
+                        href="https://pixabay.com/de/photos/football-ansto%C3%9F-fu%C3%9Fball-sport-7912318/">Fußballplätze</a>
+                </li>
+                <li><a href="https://pixabay.com/de/photos/tennis-spielen-tennisplatz-ball-5782695/">Tennisplätze</a>
+                </li>
+                <li><a href="https://pixabay.com/de/photos/rodelbahn-rutschen-kind-spass-421413/">Rodelbahnen
+                        (Sommer)</a></li>
+                <li><a href="https://pixabay.com/de/photos/schlitten-winter-schnee-kalt-4881130/">Rodelbahnen
+                        (Winter)</a></li>
+                <li><a href="https://pixabay.com/de/photos/pedenolo-trail-mountainbike-biker-2670922/">Bike-Trails</a>
+                </li>
+            </ul>
+        </article>
+    </main>
+<footer>
+    <nav>
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i> Startseite
+        </a>
+        <a href="karte/index.html">
+            <i class="fa-solid fa-location-dot"></i> Karte
+        </a>
+        <a href="team/index.html">
+            <i class="fa-solid fa-users"></i> Über uns
+        </a>
+    </nav>
+</footer>
 </body>
-
-
-
-
-
 
 </html>
