@@ -14,19 +14,21 @@ main {
 }
 
 header {
-    display: grid;
-    grid-template-columns: 80% 20%;
-}
+    background-image: url('images/header.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 350px; /* vorher: 250px – nun höher */
+    max-width: 1100px;
+    margin: 0 auto;
 
-header h2 {
-    margin: 0;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-header nav {
-    text-align: right;
-    font-size: 0.9em;
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+    font-size: 2.5em;
     font-weight: bold;
-    padding-top: 1em;
 }
 
 article {
@@ -40,11 +42,20 @@ article {
 }
 
 footer {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.9em;
-    margin-top: 0.5em;
+    background-color: #222;                /* Sehr dunkler Hintergrund im Footer */
+    color: white;                          /* Weiße Schrift im Footer */
+    text-align: center;                    /* Zentriert den gesamten Text im Footer */
+    padding: 15px;                         /* Innenabstand im Footer (oben/unten) */
 }
 
-footer nav {
-    display: inline-block;
+footer a {
+    color: #ccc;                           /* Hellgraue Farbe für Links im Footer */
+    margin: 0 15px;                        /* Horizontaler Abstand zwischen den Links */
+    text-decoration: none;                /* Entfernt Unterstreichung der Links */
 }
+
+footer a:hover {
+    text-decoration: underline;            /* Beim Überfahren mit der Maus: unterstreicht den Link */
+}
+
+
