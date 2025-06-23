@@ -19,6 +19,25 @@ let map = L.map("map", {
     maxBounds: boundsTirol,
 }).setView([ibk.lat, ibk.lng], 12);
 
+// async funktion Tirol Grenze, weil es ein polygon ist hier oben damit es die anderen nicht überdeckt
+async function loadTirol(url) {
+    //console.log(url);
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    // console.log(jsondata);
+    L.geoJSON(jsondata, {
+        style: function (feature) {
+            return {
+                color: "#AAAAAA",
+                weight: 3,
+                fillOpacity: 0,
+                dashArray: "5.5",
+            };
+        }
+    }).addTo(map);
+}
+loadTirol("tirol_1.geojson")
+
 // thematische Layer
 let overlays = {
     tennis: L.markerClusterGroup({
