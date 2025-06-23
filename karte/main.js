@@ -132,8 +132,26 @@ async function loadSport(url) {
     // console.log(jsondata);
     L.geoJSON(jsondata, {
         // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
-        onEachFeature: function (feature, layer) {
+        style: function (feature) {
             //console.log(feature.properties);
+            let platzColor;
+
+            if (feature.properties.ATTR_SPORTPLATZTYP == "Streetballplatz") {
+                platzColor = "#FF851B";
+            } else if (feature.properties.ATTR_SPORTPLATZTYP == "Mehrzweckplatz") {
+                platzColor = "#111111";
+            } else if (feature.properties.ATTR_SPORTPLATZTYP == "Fußballplatz") {
+                platzColor = "#2ECC40";
+            } else {
+                platzColor = "#AAAAAA";
+            }
+
+            return {
+                color: platzColor
+            }
+        },
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties.ATTR_SPORTPLATZTYP);
             layer.bindPopup(`
                 <h3>${feature.properties.STAETTE_NAME}</h3>
                 <h5>${feature.properties.ANLAGE_NAME}</h5>
