@@ -13,6 +13,7 @@ main {
     margin: auto;
 }
 
+/* KI_BEGIN */
 header {
     background-image: url('images/header.jpg');
     background-size: cover;
@@ -34,6 +35,7 @@ header {
     font-size: 1.8em;
     font-weight: bold;
 }
+/* KI_Ende */
 
 /* optional: wenn du einen zusätzlichen Container möchtest, ist das hier nicht mehr nötig */
 header > div {
@@ -64,6 +66,7 @@ footer {
     padding: 15px;                         /* Innenabstand im Footer (oben/unten) */
 }
 
+/* KI_BEGIN */
 footer a {
     color: #ccc;                           /* Hellgraue Farbe für Links im Footer */
     margin: 0 15px;                        /* Horizontaler Abstand zwischen den Links */
@@ -73,5 +76,5 @@ footer a {
 footer a:hover {
     text-decoration: underline;            /* Beim Überfahren mit der Maus: unterstreicht den Link */
 }
-
+/* KI_Ende */
 
