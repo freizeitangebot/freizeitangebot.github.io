@@ -8,8 +8,8 @@ let ibk = {
 };
 
 let boundsTirol = L.latLngBounds(
-    [46.5, 9.8],  // Südwestlichster Punkt (z. B. Nauders)
-    [47.8, 13.4]   // Nordöstlichster Punkt (z. B. Kufstein)
+    [46.5, 9.8],  
+    [47.8, 13.4],  
 );
 
 // Karte initialisieren
@@ -178,7 +178,6 @@ async function loadTennis(url) {
     let jsondata = await response.json();
     // console.log(jsondata);
     L.geoJSON(jsondata, {
-        // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
 
         style: function (feature) {
             //console.log(feature.properties);
@@ -231,7 +230,6 @@ async function loadSport(url) {
     let jsondata = await response.json();
     // console.log(jsondata);
     L.geoJSON(jsondata, {
-        // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
         style: function (feature) {
             //console.log(feature.properties);
             let platzColor;
@@ -281,7 +279,6 @@ async function loadSwim(url) {
     let jsondata = await response.json();
     // console.log(jsondata);
     L.geoJSON(jsondata, {
-        // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties);
 
@@ -314,23 +311,32 @@ async function loadRodel(url) {
     let jsondata = await response.json();
     // console.log(jsondata);
     L.geoJSON(jsondata, {
-        // attribution: "Datenquelle: <a href= 'https://data.wien.gv.at'> Tennisplätze Tirol</a>",
         style: function (feature) {
             //console.log(feature.properties);
             let rodelColor;
 
             if (feature.properties.ATTR_TYP == "Sommerrodelbahn") {
                 rodelColor = "#FF851B";
+                dash = "4";
+                weight = 3;
             } else if (feature.properties.ATTR_TYP == "Naturrodelbahn") {
                 rodelColor = "#0074D9";
+                dash = "0,5";
+                weight = 4;
             } else if (feature.properties.ATTR_TYP == "Trainings- und Wettkampfbahn") {
                 rodelColor = "#2ECC40";
+                dash = null;
+                weight = 2;
             } else {
                 rodelColor = "#111111";
+                dash = "1,2";
+                weight = 2;
             }
 
             return {
-                color: rodelColor
+                color: rodelColor,
+                dashArray: dash,
+                weight: weight,
             }
         },
         onEachFeature: function (feature, layer) {
