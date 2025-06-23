@@ -8,8 +8,8 @@ let ibk = {
 };
 
 let boundsTirol = L.latLngBounds(
-    [46.5, 9.8],  
-    [47.8, 13.4],  
+    [46.5, 9.8],
+    [47.8, 13.4],
 );
 
 // Karte initialisieren
@@ -68,7 +68,7 @@ let overlays = {
                         ${count}
                     </div>
                 `,
-                className: '', 
+                className: '',
                 iconSize: [50, 50]
             });
         }
@@ -104,7 +104,7 @@ let overlays = {
                         ${count}
                     </div>
                 `,
-                className: '', 
+                className: '',
                 iconSize: [50, 50]
             });
         }
@@ -112,7 +112,7 @@ let overlays = {
     }).addTo(map),
     /* KI_END */
     swim: L.markerClusterGroup({
-        disableClusteringAtZoom: 17, 
+        disableClusteringAtZoom: 17,
         /* KI_BEGIN */
         iconCreateFunction: function (cluster) {
             let count = cluster.getChildCount();
@@ -144,13 +144,13 @@ let overlays = {
                         ${count}
                     </div>
                 `,
-                className: '', 
+                className: '',
                 iconSize: [50, 50]
             });
         }
 
     }).addTo(map),
-     /* KI_END */
+    /* KI_END */
     rodel: L.featureGroup().addTo(map),
 };
 
@@ -164,7 +164,7 @@ let layerControl = L.control.layers({
     "Schwimmplätze": overlays.swim,
     "Rodelbahnen": overlays.rodel,
 
-}).addTo(map);    
+}).addTo(map);
 
 // Maßstab
 L.control.scale({
@@ -367,7 +367,7 @@ map.addControl(new L.Control.Fullscreen());
 // Leaflet locationcontrol
 L.control.locate({
     strings: {
-        title:"Eigenen Standort anzeigen"
+        title: "Eigenen Standort anzeigen"
     },
     drawCircle: false
 }).addTo(map);
@@ -380,7 +380,7 @@ const searchControl = new GeoSearch.GeoSearchControl({
 });
 map.addControl(searchControl);
 
- //Resetview
+//Resetview
 L.control.resetView({
     position: "topleft",
     title: "Reset view",
