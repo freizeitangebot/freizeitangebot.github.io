@@ -323,5 +323,20 @@ async function loadRodel(url) {
 }
 loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
 
+//Minimap Plugin LeafletS
+var gkTirol = new L.TileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png");
+var miniMap = new L.Control.MiniMap(gkTirol, {
+    toggleDisplay: true,
+    //zoomLevelOffset: -5,
+}).addTo(map);
+
 //Leaflet fullscreen Plugin
 map.addControl(new L.Control.Fullscreen());
+
+ // Leaflet locationcontrol
+        L.control.locate({
+            strings: {
+                title:"Eigenen Standort anzeigen"
+            },
+            drawCircle: false
+        }).addTo(map);
