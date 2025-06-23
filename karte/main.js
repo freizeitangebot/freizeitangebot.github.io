@@ -154,7 +154,7 @@ L.control.scale({
 
 // Tennisplätze Tirol
 async function loadTennis(url) {
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
     // console.log(jsondata);
@@ -207,7 +207,7 @@ loadTennis("./tennis/tennis_1.geojson")
 
 // Sportplätze Tirol
 async function loadSport(url) {
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
     // console.log(jsondata);
@@ -257,7 +257,7 @@ loadSport("./sportplaetze/Sportplaetze_5424977732169178233.geojson")
 
 // Schwimmanlagen Tirol
 async function loadSwim(url) {
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
     // console.log(jsondata);
@@ -266,7 +266,7 @@ async function loadSwim(url) {
         onEachFeature: function (feature, layer) {
             //console.log(feature.properties);
 
-             let center = layer.getBounds().getCenter();
+            let center = layer.getBounds().getCenter();
             let marker = L.marker(center, {
                 icon: L.icon({
                     iconUrl: "./schwimmanlagen/swimming2.png",
@@ -290,7 +290,7 @@ loadSwim("./schwimmanlagen/Schwimmanlagen_3256018082439661768.geojson")
 
 // Rodelbahnen Tirol
 async function loadRodel(url) {
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
     // console.log(jsondata);
@@ -334,7 +334,6 @@ loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
 var gkTirol = new L.TileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png");
 var miniMap = new L.Control.MiniMap(gkTirol, {
     toggleDisplay: true,
-    //zoomLevelOffset: -5,
 }).addTo(map);
 
 //Leaflet fullscreen Plugin
