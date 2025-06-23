@@ -1,0 +1,73 @@
+
+body {
+    font-family: Arial, sans-serif; /* Setzt die Schriftart für den gesamten Text auf Arial (oder eine ähnliche) */
+    margin: 0;                      /* Entfernt den Standard-Außenabstand des Body */
+    padding: 0;                     /* Entfernt den inneren Abstand des Body */
+    background-color: #f4f4f4;      /* Hellgrauer Hintergrund für die ganze Seite */
+}
+
+header {
+    background-image: url('header.jpg');   /* Hintergrundbild im Header */
+    background-size: cover;                /* Das Bild füllt den Header vollständig (ggf. zugeschnitten) */
+    background-position: center;           /* Das Bild wird mittig im Header ausgerichtet */
+    height: 250px;                         /* Höhe des Headers beträgt 250 Pixel */
+
+    max-width: 1100px;                     /* Begrenzung der Header-Breite auf 1100 Pixel */
+    margin: 0 auto;                        /* Zentriert den Header horizontal auf der Seite */
+
+    display: flex;                         /* Aktiviert Flexbox, damit Inhalte zentriert werden können */
+    align-items: center;                   /* Zentriert den Inhalt vertikal innerhalb des Headers */
+    justify-content: center;               /* Zentriert den Inhalt horizontal im Header */
+
+    color: white;                          /* Weißer Text im Header */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7); /* Schatten hinter dem Text für bessere Lesbarkeit */
+    font-size: 2.5em;                      /* Vergrößert den Text auf das 2,5-Fache der Standardgröße */
+    font-weight: bold;                     /* Macht den Text fett */
+}
+
+main {
+    padding: 30px;                         /* Innenabstand im Main-Bereich (Inhalt wird eingerückt) */
+    max-width: 1000px;                     /* Maximale Breite des Inhalts (damit er nicht zu breit wird) */
+    margin: auto;                          /* Zentriert den Main-Bereich horizontal */
+    background-color: white;              /* Weißer Hintergrund für den Hauptinhalt */
+}
+
+.team-member {
+    margin-bottom: 40px;                   /* Abstand unterhalb jedes Teammitglied-Blocks */
+}
+
+.team-member img {
+    width: 100%;                           /* Bild nimmt die volle Breite des umgebenden Containers ein */
+    max-width: 300px;                      /* Bild darf maximal 300 Pixel breit sein */
+    border-radius: 8px;                    /* Runde Ecken des Bilds mit 8 Pixel Radius */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Schatteneffekt unter dem Bild für mehr Tiefe */
+}
+
+.contact-info {
+    margin-top: 10px;                      /* Abstand oberhalb der Kontaktinfo */
+    font-size: 1rem;                       /* Standard-Schriftgröße */
+}
+
+.contact-info i {
+    margin-right: 8px;                     /* Abstand rechts vom Icon zum Text */
+    color: #555;                           /* Mittelgraue Farbe für Icons */
+}
+
+footer {
+    background-color: #222;                /* Sehr dunkler Hintergrund im Footer */
+    color: white;                          /* Weiße Schrift im Footer */
+    text-align: center;                    /* Zentriert den gesamten Text im Footer */
+    padding: 15px;                         /* Innenabstand im Footer (oben/unten) */
+}
+
+footer a {
+    color: #ccc;                           /* Hellgraue Farbe für Links im Footer */
+    margin: 0 15px;                        /* Horizontaler Abstand zwischen den Links */
+    text-decoration: none;                /* Entfernt Unterstreichung der Links */
+}
+
+footer a:hover {
+    text-decoration: underline;            /* Beim Überfahren mit der Maus: unterstreicht den Link */
+}
+
+
