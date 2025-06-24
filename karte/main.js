@@ -7,6 +7,7 @@ let ibk = {
     lng: 11.392778
 };
 
+// Grenze Tirol
 let boundsTirol = L.latLngBounds(
     [46.5, 9.8],
     [47.8, 13.4],
@@ -154,7 +155,7 @@ let overlays = {
     rodel: L.featureGroup().addTo(map),
 };
 
-// Layer contol
+// Layer control
 let layerControl = L.control.layers({
     "Openstreetmap": L.tileLayer.provider("OpenStreetMap.Mapnik"),
     "Esri WorldImagery": L.tileLayer.provider("Esri.WorldImagery").addTo(map)
@@ -355,7 +356,7 @@ async function loadRodel(url) {
 }
 loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
 
-//Minimap Plugin LeafletS
+//Minimap Plugin Leaflet
 var gkTirol = new L.TileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png");
 var miniMap = new L.Control.MiniMap(gkTirol, {
     toggleDisplay: true,
