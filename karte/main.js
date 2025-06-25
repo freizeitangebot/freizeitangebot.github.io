@@ -21,7 +21,7 @@ let map = L.map("map", {
 }).setView([ibk.lat, ibk.lng], 12);
 
 /*
-// async funktion Tirol Grenze, weil es ein polygon ist hier oben damit es die anderen nicht überdeckt
+// async funktion Tirol Grenze, weil es ein polygon ist hier oben damit es die anderen nicht überdeckt/ weiß nicht warum es nicht mehr funktionier es zeigt alles an aber Popups gehen nicht mehr danach gestern aber schon
 async function loadTirol(url) {
     //console.log(url);
     let response = await fetch(url);
