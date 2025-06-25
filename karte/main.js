@@ -20,7 +20,7 @@ let map = L.map("map", {
     maxBounds: boundsTirol,
 }).setView([ibk.lat, ibk.lng], 12);
 
-
+/*
 // async funktion Tirol Grenze, weil es ein polygon ist hier oben damit es die anderen nicht überdeckt
 async function loadTirol(url) {
     //console.log(url);
@@ -39,7 +39,7 @@ async function loadTirol(url) {
     }).addTo(map);
 }
 loadTirol("tirol_1.geojson")
-
+*/
 // thematische Layer
 let overlays = {
     tennis: L.markerClusterGroup({
@@ -320,16 +320,16 @@ async function loadRodel(url) {
 
             if (feature.properties.ATTR_TYP == "Sommerrodelbahn") {
                 rodelColor = "#FF851B";
-                dash = "4";
+                dash = "5";
                 weight = 3;
             } else if (feature.properties.ATTR_TYP == "Naturrodelbahn") {
-                rodelColor = "#0074D9";
-                dash = "0,5";
-                weight = 4;
+                rodelColor = "#87CEFF";
+                dash = "5";
+                weight = 3;
             } else if (feature.properties.ATTR_TYP == "Trainings- und Wettkampfbahn") {
                 rodelColor = "#2ECC40";
-                dash = null;
-                weight = 2;
+                dash = "4";
+                weight = 3;
             } else {
                 rodelColor = "#111111";
                 dash = "1,2";
@@ -374,7 +374,7 @@ async function loadRad(url) {
                 radColor = "#0074D9";
                 weight = 4;
             } else if (feature.properties.ROUTEN_SCH == "mittelschwierig") {
-                radColor = "#FF851B";
+                radColor = "#FF4000";
                 weight = 3.5;
             } else if (feature.properties.ROUTEN_SCH == "schwierig") {
                 radColor = "#111111";
@@ -390,7 +390,7 @@ async function loadRad(url) {
             }
         },
         onEachFeature: function (feature, layer) {
-            console.log(feature.properties.ROUTEN_SCH);
+            //console.log(feature.properties.ROUTEN_SCH);
             layer.bindPopup(`
                 <h3>${feature.properties.ROUTEN_TYP}</h3>
                 <h4>${feature.properties.ROUTENNAME}</h4>
