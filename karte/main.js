@@ -154,6 +154,7 @@ let overlays = {
     }).addTo(map),
     /* KI_END */
     rodel: L.featureGroup().addTo(map),
+    rad: L.featureGroup().addTo(map),
 };
 
 // Layer control
@@ -165,7 +166,7 @@ let layerControl = L.control.layers({
     "Sportplätze": overlays.sport,
     "Schwimmplätze": overlays.swim,
     "Rodelbahnen": overlays.rodel,
-
+    "Radtouren": overlays.rad,
 }).addTo(map);
 
 // Maßstab
@@ -356,6 +357,59 @@ async function loadRodel(url) {
     }).addTo(overlays.rodel);
 }
 loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
+
+
+// Radtouren 
+async function loadRad(url) {
+    //console.log(url);
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    // console.log(jsondata);
+    L.geoJSON(jsondata, {
+        style: function (feature) {
+            //console.log(feature.properties);
+            let radColor;
+
+            if (feature.properties.ROUTEN_SCH == "leicht") {
+                radColor = "#0074D9";
+                weight = 4;
+            } else if (feature.properties.ROUTEN_SCH == "mittelschwierig") {
+                radColor = "#FF851B";
+                weight = 3.5;
+            } else if (feature.properties.ROUTEN_SCH == "schwierig") {
+                radColor = "#111111";
+                weight = 3;
+            } else {
+                radColor = "#AAAAAA";
+                weight = 3;
+            }
+
+            return {
+                color: radColor,
+                weight: weight,
+            }
+        },
+        onEachFeature: function (feature, layer) {
+            console.log(feature.properties.ROUTEN_SCH);
+            layer.bindPopup(`
+                <h3>${feature.properties.ROUTEN_TYP}</h3>
+                <h4>${feature.properties.ROUTENNAME}</h4>
+                <hr>
+                <h3>Routen Details</h4>
+                <h5>Länge: ${feature.properties.LAENGE_KM} km</h5>
+                <h5>Start: ${feature.properties.ROUTENSTAR}</h5>
+                <h5>Ziel: ${feature.properties.ROUTENZIEL}</h5>
+                <h5>Schwierigkeit: ${feature.properties.ROUTEN_SCH}</h5>
+                <h5>Höhenmeter auf: ${feature.properties.HM_BERGAUF} m</h5>
+                <h5>Höhenmeter ab: ${feature.properties.HM_BERGAB} m</h5>
+
+                
+                `
+            );
+        }
+    }).addTo(overlays.rad);
+}
+loadRad("./radtouren/radtouren.geojson")
 
 //Minimap Plugin Leaflet
 var gkTirol = new L.TileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png");
