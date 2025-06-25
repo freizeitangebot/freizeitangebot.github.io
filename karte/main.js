@@ -20,7 +20,7 @@ let map = L.map("map", {
     maxBounds: boundsTirol,
 }).setView([ibk.lat, ibk.lng], 12);
 
-
+/*
 // async funktion Tirol Grenze, weil es ein polygon ist hier oben damit es die anderen nicht überdeckt
 async function loadTirol(url) {
     //console.log(url);
@@ -39,7 +39,7 @@ async function loadTirol(url) {
     }).addTo(map);
 }
 loadTirol("tirol_1.geojson")
-
+*/
 // thematische Layer
 let overlays = {
     tennis: L.markerClusterGroup({
@@ -96,7 +96,7 @@ let overlays = {
                     ">
                     <div style="
                         position: absolute;
-                        bottom: 6px;
+                        bottom: 5px;
                         left: 50%;
                         transform: translateX(-50%);
                         color: black;
@@ -154,6 +154,7 @@ let overlays = {
     }).addTo(map),
     /* KI_END */
     rodel: L.featureGroup().addTo(map),
+    rad: L.featureGroup().addTo(map),
 };
 
 // Layer control
@@ -165,7 +166,7 @@ let layerControl = L.control.layers({
     "Sportplätze": overlays.sport,
     "Schwimmplätze": overlays.swim,
     "Rodelbahnen": overlays.rodel,
-
+    "Radtouren": overlays.rad,
 }).addTo(map);
 
 // Maßstab
@@ -319,16 +320,16 @@ async function loadRodel(url) {
 
             if (feature.properties.ATTR_TYP == "Sommerrodelbahn") {
                 rodelColor = "#FF851B";
-                dash = "4";
+                dash = "5";
                 weight = 3;
             } else if (feature.properties.ATTR_TYP == "Naturrodelbahn") {
-                rodelColor = "#0074D9";
-                dash = "0,5";
-                weight = 4;
+                rodelColor = "#87CEFF";
+                dash = "5";
+                weight = 3;
             } else if (feature.properties.ATTR_TYP == "Trainings- und Wettkampfbahn") {
                 rodelColor = "#2ECC40";
-                dash = null;
-                weight = 2;
+                dash = "4";
+                weight = 3;
             } else {
                 rodelColor = "#111111";
                 dash = "1,2";
@@ -356,6 +357,59 @@ async function loadRodel(url) {
     }).addTo(overlays.rodel);
 }
 loadRodel("./rodelbahnen/Rodelbahnen_3907122753758785632.geojson")
+
+
+// Radtouren 
+async function loadRad(url) {
+    //console.log(url);
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    // console.log(jsondata);
+    L.geoJSON(jsondata, {
+        style: function (feature) {
+            //console.log(feature.properties);
+            let radColor;
+
+            if (feature.properties.ROUTEN_SCH == "leicht") {
+                radColor = "#0074D9";
+                weight = 4;
+            } else if (feature.properties.ROUTEN_SCH == "mittelschwierig") {
+                radColor = "#FF4000";
+                weight = 3.5;
+            } else if (feature.properties.ROUTEN_SCH == "schwierig") {
+                radColor = "#111111";
+                weight = 3;
+            } else {
+                radColor = "#AAAAAA";
+                weight = 3;
+            }
+
+            return {
+                color: radColor,
+                weight: weight,
+            }
+        },
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties.ROUTEN_SCH);
+            layer.bindPopup(`
+                <h3>${feature.properties.ROUTEN_TYP}</h3>
+                <h4>${feature.properties.ROUTENNAME}</h4>
+                <hr>
+                <h3>Routen Details</h4>
+                <h5>Länge: ${feature.properties.LAENGE_KM} km</h5>
+                <h5>Start: ${feature.properties.ROUTENSTAR}</h5>
+                <h5>Ziel: ${feature.properties.ROUTENZIEL}</h5>
+                <h5>Schwierigkeit: ${feature.properties.ROUTEN_SCH}</h5>
+                <h5>Höhenmeter auf: ${feature.properties.HM_BERGAUF} m</h5>
+                <h5>Höhenmeter ab: ${feature.properties.HM_BERGAB} m</h5>
+
+                
+                `
+            );
+        }
+    }).addTo(overlays.rad);
+}
+loadRad("./radtouren/radtouren.geojson")
 
 //Minimap Plugin Leaflet
 var gkTirol = new L.TileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png");
