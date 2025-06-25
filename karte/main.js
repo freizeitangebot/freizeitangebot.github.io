@@ -398,6 +398,7 @@ async function loadRad(url) {
                 <h3>Routen Details</h4>
                 <h5>Länge: ${feature.properties.LAENGE_KM} km</h5>
                 <h5>Start: ${feature.properties.ROUTENSTAR}</h5>
+                <p><i class="fa-solid fa-down-long"></i></p>
                 <h5>Ziel: ${feature.properties.ROUTENZIEL}</h5>
                 <h5>Schwierigkeit: ${feature.properties.ROUTEN_SCH}</h5>
                 <h5>Höhenmeter auf: ${feature.properties.HM_BERGAUF} m</h5>
