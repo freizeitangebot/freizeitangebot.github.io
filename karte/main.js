@@ -20,6 +20,7 @@ let map = L.map("map", {
     maxBounds: boundsTirol,
 }).setView([ibk.lat, ibk.lng], 12);
 
+
 // async funktion Tirol Grenze, weil es ein polygon ist hier oben damit es die anderen nicht überdeckt
 async function loadTirol(url) {
     //console.log(url);
