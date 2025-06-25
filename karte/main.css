@@ -35,19 +35,17 @@ header {
     font-size: 1.8em;
     font-weight: bold;
 }
-/* KI_Ende */
 
-/* optional: wenn du einen zusätzlichen Container möchtest, ist das hier nicht mehr nötig */
 header > div {
     width: 100%;
 }
 
-/* Optional: wenn du den Text in einer max. Breite zentrieren möchtest */
 
 header > div {
     max-width: 1100px;
     width: 100%;
 }
+/* KI_END */
 
 article {
     margin-top: 0.5em;
@@ -59,7 +57,7 @@ article {
     border: 1px solid gray;
 }
 
-
+/* KI_BEGIN */
 footer {
     background-color: #222;                /* Sehr dunkler Hintergrund im Footer */
     color: white;                          /* Weiße Schrift im Footer */
@@ -67,7 +65,6 @@ footer {
     padding: 15px;                         /* Innenabstand im Footer (oben/unten) */
 }
 
-/* KI_BEGIN */
 footer a {
     color: #ccc;                           /* Hellgraue Farbe für Links im Footer */
     margin: 0 15px;                        /* Horizontaler Abstand zwischen den Links */
@@ -77,5 +74,4 @@ footer a {
 footer a:hover {
     text-decoration: underline;            /* Beim Überfahren mit der Maus: unterstreicht den Link */
 }
-/* KI_Ende */
-
+/* KI_END */

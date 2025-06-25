@@ -6,6 +6,7 @@ body {
     background-color: #f4f4f4;      /* Hellgrauer Hintergrund für die ganze Seite */
 }
 
+/* KI_BEGIN */
 header {
     background-image: url('header.jpg');   /* Hintergrundbild im Header */
     background-size: cover;                /* Das Bild füllt den Header vollständig (ggf. zugeschnitten) */
@@ -24,6 +25,7 @@ header {
     font-size: 2.5em;                      /* Vergrößert den Text auf das 2,5-Fache der Standardgröße */
     font-weight: bold;                     /* Macht den Text fett */
 }
+/* KI_END */
 
 main {
     padding: 30px;                         /* Innenabstand im Main-Bereich (Inhalt wird eingerückt) */
@@ -32,6 +34,7 @@ main {
     background-color: white;              /* Weißer Hintergrund für den Hauptinhalt */
 }
 
+/* KI_BEGIN */
 .team-member {
     margin-bottom: 40px;                   /* Abstand unterhalb jedes Teammitglied-Blocks */
 }
@@ -72,5 +75,4 @@ footer a {
 footer a:hover {
     text-decoration: underline;            /* Beim Überfahren mit der Maus: unterstreicht den Link */
 }
-
-
+/* KI_END */
