@@ -290,7 +290,7 @@ async function loadSwim(url) {
                 icon: L.icon({
                     iconUrl: "./schwimmanlagen/swimming2.png",
                     iconAnchor: [16, 37],
-                    maxZoom: 14,
+                    // maxZoom: 14,
                 })
             }).addTo(overlays.swim);
 
